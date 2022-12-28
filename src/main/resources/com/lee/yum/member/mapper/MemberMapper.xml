@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lee.yum.member.mapper.MemberMapper">
+
+    <select id="memberList" resultType="com.lee.yum.member.model.MemberDTO">
+        SELECT *
+        FROM MEMBER_MANAGEMENT
+    </select>
+
+    <select id="memberView" resultType="com.lee.yum.member.model.MemberDTO" parameterType="Integer">
+        SELECT *
+        FROM MEMBER_MANAGEMENT
+        WHERE MNO = #{mNo}
+    </select>
+
+    <insert id="insert" parameterType="com.lee.yum.member.model.MemberDTO">
+        INSERT INTO member_management
+            (id, pw, userName, email, joinDate)
+        VALUES
+            (#{id}, #{pw}, #{userName}, #{email}, NOW())
+    </insert>
+
+    <delete id="delete" parameterType="Integer">
+        DELETE
+        FROM MEMBER_MANAGEMENT
+        WHERE MNO = #{mNo}
+    </delete>
+
+    <update id="update" parameterType="com.lee.yum.member.model.MemberDTO">
+        UPDATE MEMBER_MANAGEMENT
+        SET PW         = #{pw},
+            USERNAME       = #{userName},
+            EMAIL      = #{email},
+            CHANGEDATE = NOW()
+        WHERE MNO = #{mNo}
+    </update>
+
+
+</mapper>

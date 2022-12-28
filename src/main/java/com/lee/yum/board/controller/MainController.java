@@ -1,4 +1,4 @@
-package com.lee.yum.controller;
+package com.lee.yum.board.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
